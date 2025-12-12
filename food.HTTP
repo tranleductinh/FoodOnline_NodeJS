@@ -1,0 +1,105 @@
+###
+POST http://localhost:3001/api/food
+Content-Type: application/json
+
+{
+  "name": "tinh",
+  "description": "ngon",
+  "price": 12.12
+}
+
+###
+GET http://localhost:3001/api/food
+Content-Type: application/json
+
+
+###
+PUT http://localhost:3001/api/food/693b11f65bd2a4fef1695c2e
+Content-Type: application/json
+
+{
+  "name": "tinhsssss",
+  "description": "ngon",
+  "price": 12.12
+}
+
+###
+DELETE http://localhost:3001/api/food/693b11f65bd2a4fef1695c2e
+Content-Type: application/json
+
+###
+POST http://localhost:3001/api/order
+Content-Type: application/json
+
+{
+  "user_id": "693afbf6018e4da42bd17b28",
+  "items": [
+    {
+      "food_id": "693b1206640eaa52cc7c2695",
+      "quantity": 2
+    },
+    {
+      "food_id": "693b1206640eaa52cc7c2695",
+      "quantity": 3
+    }
+  ],
+  "payment_method": "Cash"
+}
+
+###
+GET http://localhost:3001/api/order
+Content-Type: application/json
+
+###
+PUT http://localhost:3001/api/order/693b2fd04c7f5c2351adabe4
+Content-Type: application/json
+
+{
+  "status" : "completed"
+}
+
+###
+POST http://localhost:3001/api/cart
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5M2FmYmY2MDE4ZTRkYTQyYmQxN2IyOCIsImlhdCI6MTc2NTUxNzA3NiwiZXhwIjoxNzY1NjAzNDc2fQ.q0oat2Vm-1cr-r55K0jlBKJCEs4zVEm7IxyJbDLP47Y
+
+{
+  "food_id": "693b91053ec18f3370db3a83"
+}
+
+###
+PUT http://localhost:3001/api/cart
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5M2FmYmY2MDE4ZTRkYTQyYmQxN2IyOCIsImlhdCI6MTc2NTUxNzA3NiwiZXhwIjoxNzY1NjAzNDc2fQ.q0oat2Vm-1cr-r55K0jlBKJCEs4zVEm7IxyJbDLP47Y
+
+{
+  "food_id": "693b91053ec18f3370db3a83"
+}
+
+###
+GET http://localhost:3001/api/cart
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5M2FmYmY2MDE4ZTRkYTQyYmQxN2IyOCIsImlhdCI6MTc2NTUxNzA3NiwiZXhwIjoxNzY1NjAzNDc2fQ.q0oat2Vm-1cr-r55K0jlBKJCEs4zVEm7IxyJbDLP47Y
+
+###
+POST http://localhost:3001/api/auth/sign-up
+Content-Type: application/json
+
+{
+  "email": "tinh@gmail.com",
+  "name": "admin",
+  "password": "123456",
+  "role": "admin",
+  "avatar": "https://github.com/shadcn.png"
+}
+
+###
+POST http://localhost:3001/api/auth/sign-in
+Content-Type: application/json
+
+{
+  "email": "tinh@gmail.com",
+  "password": "123456"
+}
+
+
