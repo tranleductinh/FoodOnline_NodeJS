@@ -12,7 +12,10 @@ connectDB();
 const app = express();
 app.use(
   cors({
-    origin: "https://food-online-tinh-react-js.vercel.app/", // FE của bạn
+    origin: [
+      "http://localhost:5173",
+      "https://food-online-tinh-react-js.vercel.app",
+    ], // FE của bạn
     credentials: true, // BẮT BUỘC
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
