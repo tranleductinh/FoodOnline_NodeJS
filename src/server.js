@@ -7,9 +7,12 @@ import authRoutes from "./routes/auth.route.js";
 import foodRoutes from "./routes/food.route.js";
 import orderRoutes from "./routes/order.route.js";
 import cartRoutes from "./routes/cart.route.js";
+import http from "http";
+import { initSocket } from "./socket/socket.js";
 dotenv.config();
 connectDB();
 const app = express();
+
 app.use(
   cors({
     origin: [
@@ -27,5 +30,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/food", foodRoutes);
 app.use("/api/order", orderRoutes);
 app.use("/api/cart", cartRoutes);
-const port = process.env.PORT || 3000;
-app.listen(port, () => console.log(`Server running on port ${port}`));
+const server = http.createServer(app);
+initSocket(server);
+const port = process.env.PORT || 3001;
+server.listen(port, () => console.log(`Server running on port ${port}`));

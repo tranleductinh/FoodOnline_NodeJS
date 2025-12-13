@@ -5,6 +5,7 @@ import {
   deleteCart,
   deleteAllCart,
 } from "../services/cart.service.js";
+import { getIO } from "../socket/socket.js";
 import { success, error } from "../utils/response.js";
 
 export const addCartController = async (req, res) => {
@@ -13,6 +14,12 @@ export const addCartController = async (req, res) => {
     const { _id } = req.body;
     const items = [{ food_id: _id }];
     const cart = await addCart(user_id, items);
+    try {
+      const io = getIO();
+      io.emit("data socket", cart);
+    } catch (err) {
+      return error(res, err.errorCode, err.message, err.status);
+    }
     return success(res, cart, "Cart updated successfully", 200);
   } catch (err) {
     return error(res, err.errorCode, err.message, err.status);
@@ -24,6 +31,12 @@ export const minusCartController = async (req, res) => {
     const user_id = req.user._id;
     const { _id } = req.body;
     const cart = await minusCart(user_id, _id);
+    try {
+      const io = getIO();
+      io.emit("data socket",cart);
+    } catch (err) {
+      return error(res, err.errorCode, err.message, err.status);
+    }
     return success(res, cart, "Cart updated successfully", 200);
   } catch (err) {
     return error(res, err.errorCode, err.message, err.status);
