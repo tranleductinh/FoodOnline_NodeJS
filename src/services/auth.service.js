@@ -14,6 +14,7 @@ export const singIn = async ({ email, password }) => {
       const errors = new Error();
       errors.message = "User not found";
       errors.errorCode = "USER_NOT_FOUND";
+      throw errors;
     }
     const isMatch = await user.comparePassword(password);
     if (!isMatch) {
