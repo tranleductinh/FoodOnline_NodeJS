@@ -14,7 +14,12 @@ export const initSocket = (server) => {
   });
   io.on("connection", (socket) => {
     console.log(`✅ Client kết nối: ${socket.id}`);
-
+    socket.on("room-admin", ()=> {
+        socket.join("admin");
+    })
+    socket.on("room-user", ()=> {
+        socket.join("user");
+    })
     socket.on("disconnect", () => {
       console.log(`❌ Client ngắt kết nối: ${socket.id}`);
     });

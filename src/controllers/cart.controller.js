@@ -16,7 +16,7 @@ export const addCartController = async (req, res) => {
     const cart = await addCart(user_id, items);
     try {
       const io = getIO();
-      io.emit("data socket", cart);
+      io.to("user").emit("data socket");
     } catch (err) {
       return error(res, err.errorCode, err.message, err.status);
     }
@@ -33,7 +33,7 @@ export const minusCartController = async (req, res) => {
     const cart = await minusCart(user_id, _id);
     try {
       const io = getIO();
-      io.emit("data socket",cart);
+      io.to("user").emit("data socket");
     } catch (err) {
       return error(res, err.errorCode, err.message, err.status);
     }
@@ -58,6 +58,12 @@ export const deleteCartController = async (req, res) => {
     const user_id = req.user._id;
     const { _id } = req.params;
     const cart = await deleteCart(user_id, _id);
+    try {
+      const io = getIO();
+      io.to("user").emit("data socket");
+    } catch (err) {
+      return error(res, err.errorCode, err.message, err.status);
+    }
     return success(res, cart, "Cart deleted successfully", 200);
   } catch (err) {
     return error(res, err.errorCode, err.message, err.status);
@@ -68,6 +74,12 @@ export const deleteAllCartController = async (req, res) => {
   try {
     const user_id = req.user._id;
     const cart = await deleteAllCart(user_id);
+    try {
+      const io = getIO();
+      io.to("user").emit("data socket");
+    } catch (err) {
+      return error(res, err.errorCode, err.message, err.status);
+    }
     return success(res, cart, "Cart deleted successfully", 200);
   } catch (err) {
     return error(res, err.errorCode, err.message, err.status);

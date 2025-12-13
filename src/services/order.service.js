@@ -47,7 +47,7 @@ export const addOrder = async (user_id, data) => {
       total_amount: total,
       payment_method,
       status: "pending",
-    });
+    })
 
     return order;
   } catch (error) {
