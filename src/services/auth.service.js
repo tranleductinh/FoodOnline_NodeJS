@@ -82,7 +82,7 @@ export const refreshTokenProcess = async (refreshTokenFromCookie) => {
       accessToken: token.accessToken,
     };
   } catch (error) {
-    throw new Error("Refresh token not exist: " + error.message);
+    throw new Error(error.message);
   }
 };
 
