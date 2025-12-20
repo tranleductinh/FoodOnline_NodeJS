@@ -3,7 +3,6 @@ import { generateToken } from "../utils/generateToken.js";
 import jwt from "jsonwebtoken";
 import dotevn from "dotenv";
 import admin from "../config/firebase.js";
-import { refreshToken } from "firebase-admin/app";
 dotevn.config();
 
 
